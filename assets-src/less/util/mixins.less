@@ -1,0 +1,29 @@
+.transition(@prop: all, @speed: 200ms, @easing: ease){
+  -webkit-transition: @prop @speed @easing;
+  -moztransition: @prop @speed @easing;
+  transition: @prop @speed @easing;
+}
+
+.center(@how: 'vh') {
+  & when (@how = 'vh') {
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+  & when (@how = 'v') {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+  & when (@how = 'h') {
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+}

@@ -1,6 +1,6 @@
 var path    = require('path');
 var root    = path.resolve('./');
-var assets  = path.join(root, 'public');
+var assets  = path.join(root, 'app/public');
 var src     = path.join(root, 'assets-src');
 var bower   = path.join(root, 'bower_components');
 
@@ -12,7 +12,10 @@ module.exports = {
     bower: bower
   },
   fonts: {
-    src: path.join(bower, 'bootstrap-material-design/fonts'),
+    src: [
+      path.join(bower, 'bootstrap-material-design/fonts/**/*.{ttf,eot,otf,woff,woff2,svg}'),
+      path.join(bower, 'font-awesome/fonts/**/*.{ttf,eot,otf,woff,woff2,svg}')
+    ],
     dest: path.resolve(assets, 'fonts'),
     ext: '.{ttf,eot,otf,woff,woff2,svg}'
   },
@@ -50,7 +53,7 @@ module.exports = {
       'bootstrap-material-design/dist/js/material.min.js',
       'youtube-loading-bar/dist/js/youtubeLoadingBar.min.js',
       'jquery-form/jquery.form.js',
-      'cropper/dist/cropper.min.js',
+      'cropper/dist/cropper.min.js'
     ],
     unconcat: [
       'modernizr/modernizr.js'
@@ -62,8 +65,10 @@ module.exports = {
     concat: [
       'bootstrap/dist/css/bootstrap.min.css',
       'bootstrap-material-design/dist/css/material.min.css',
+      'bootstrap-material-design/dist/css/material-fullpalette.min.css',
       'bootstrap-material-design/dist/css/ripples.min.css',
       'cropper/dist/cropper.min.css',
+      'font-awesome/css/font-awesome.min.css'
     ],
     unconcat: []
   },

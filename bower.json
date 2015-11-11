@@ -13,8 +13,10 @@
     "tests"
   ],
   "dependencies": {
+    "bootstrap": "https://github.com/twbs/bootstrap.git#~3.3.5",
     "bootstrap-material-design": "https://github.com/FezVrasta/bootstrap-material-design.git#~0.3.0",
     "cropper": "https://github.com/fengyuanchen/cropper.git#~1.0.0",
+    "font-awesome": "https://github.com/FortAwesome/Font-Awesome.git#~4.4.0",
     "isMobile": "~0.3.9",
     "jquery": "~2.1.4",
     "jquery-form": "https://github.com/malsup/form.git#~3.46.0",

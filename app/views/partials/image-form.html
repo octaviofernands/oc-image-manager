@@ -1,0 +1,46 @@
+<div class="ocim-actions-wrapper ocim-image-form-wrapper ocim-active" id="ocim-image-form-wrapper">
+  <form>
+    <input type="file" name="image_file" id="image-file" class="image-file">
+    <div class="row ocim-form-step" id="ocim-form-step-1">
+      <div class="col-md-6 col-sm-12 ocim-image-preview-wrapper">
+        <img src="" class="ocim-image-preview" id="ocim-image-preview">
+      </div>
+      <div class="col-md-6 col-sm-12 ocim-image-crop-options">
+        <h4>Crop Sizes</h4>
+        <div class="row">
+          <div class="col-sm-12">
+              <button class="btn btn-sm btn-info ocim-crop-size-btn" rel="800x600">800x600</button>
+              <button class="btn btn-sm btn-info ocim-crop-size-btn" rel="1000x600">1000x600</button>
+              <button class="btn btn-sm btn-info ocim-crop-size-btn" rel="free">free</button>
+          </div>
+        </div>
+
+        <div class="row ocim-image-crop-fields" id="ocim-image-crop-fields">
+          <div class="col-sm-12">
+            <div class="form-inline">
+              <div class="input-group">
+                <input type="text" class="form-control" id="ocim-image-crop-width" placeholder="width">
+              </div>
+
+              <div class="input-group">
+                <span class="input-group-addon">x</span>
+                <input type="text" class="form-control" id="ocim-image-crop-height" placeholder="height">
+              </div>
+
+              <div class="input-group">
+                <button class="btn btn-sm btn-success" id="ocim-image-crop-set-size">set</button>
+              </div>
+            </div>
+            <div class="form-inline">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="ocim-image-crop-save-size"> Save crop size for future presets
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

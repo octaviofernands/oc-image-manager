@@ -1,0 +1,24 @@
+.ocim-image-list-wrapper .ocim-image-list li a .ocim-image-item-description small:first-of-type,.ocim-nav ul li{float:left}
+*{box-sizing:border-box}
+.ocim-wrapper{padding:10px}
+.ocim-wrapper .ocim-body{margin-top:10px;padding:20px;background:#fff;border-radius:10px;overflow:hidden}
+.ocim-actions-wrapper{display:none}
+.ocim-actions-wrapper.ocim-active{display:block}
+.ocim-header{position:relative;width:100%;padding-left:20px;background:#fff;border-radius:10px}
+.ocim-header .ocim-title{margin:0;height:50px;line-height:50px;font-size:30px}
+.ocim-header .ocim-close{position:absolute;display:inline-block;right:20px;font-size:30px;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);-webkit-transition:all .2s ease;-moztransition:all .2s ease;transition:all .2s ease}
+.ocim-nav{display:block;width:100%;margin-bottom:20px}
+.ocim-nav ul{display:none;list-style:none;padding:0}
+.ocim-nav ul.ocim-active{display:block}
+.ocim-nav ul li .btn{margin:0}
+.ocim-nav ul li input,.ocim-nav ul li input:focus{height:36px}
+.ocim-image-list-wrapper{width:100%;position:relative;padding:20px;overflow:hidden;min-height:60vh;height:auto;display:none}
+.ocim-image-list-wrapper .ocim-image-list{display:block;width:100%;overflow:auto;list-style:none;padding:0;border:1px solid #eee}
+.ocim-image-list-wrapper .ocim-image-list li{float:left;position:relative;width:10%;padding:10px}
+.ocim-image-list-wrapper .ocim-image-list li a{position:relative;display:block;width:100%;padding-bottom:100%;overflow:hidden}
+.ocim-image-list-wrapper .ocim-image-list li a img{position:absolute;display:block;width:100%;z-index:1}
+.ocim-image-list-wrapper .ocim-image-list li a .ocim-image-item-description{position:absolute;left:0;width:100%;bottom:-100%;padding:5px;background:rgba(0,0,0,.7);color:#fff;z-index:2;-webkit-transition:all .3s ease;-moztransition:all .3s ease;transition:all .3s ease}
+.ocim-image-list-wrapper .ocim-image-list li a .ocim-image-item-description label{display:block;width:100%}
+.ocim-image-list-wrapper .ocim-image-list li a .ocim-image-item-description small:last-of-type{float:right}
+.ocim-image-list-wrapper .ocim-image-list li a:hover .ocim-image-item-description{bottom:0}
+.ocim-image-list-wrapper .pagination-wrap{display:block;width:100%;text-align:center}

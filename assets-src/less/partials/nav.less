@@ -1,0 +1,31 @@
+.ocim-nav {
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+
+  ul {
+    display:none;
+    list-style: none;
+    padding: 0;
+
+    &.ocim-active {
+      display: block;
+    }
+
+    li {
+      float: left;
+
+      .btn {
+        margin: 0;
+      }
+
+      input {
+        height: 36px;
+
+        &:focus {
+          height: 36px;
+        }
+      }
+    }
+  }
+}
