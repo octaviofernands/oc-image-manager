@@ -1,0 +1,24 @@
+{
+  "name": "oc-image-manager",
+  "version": "0.0.1",
+  "authors": [
+    "Octavio Fernandes <octaviofernandes.inf@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-material-design": "https://github.com/FezVrasta/bootstrap-material-design.git#~0.3.0",
+    "cropper": "https://github.com/fengyuanchen/cropper.git#~1.0.0",
+    "isMobile": "~0.3.9",
+    "jquery": "~2.1.4",
+    "jquery-form": "https://github.com/malsup/form.git#~3.46.0",
+    "modernizr": "~2.8.3",
+    "typeahead.js": "~0.11.1"
+  }
+}
