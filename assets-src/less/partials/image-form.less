@@ -1,7 +1,53 @@
-.ocim-image-list-wrapper {
+.ocim-image-form-wrapper {
   width: 100%;
   position: relative;
   padding: 20px;
   min-height: 60vh;
   height: auto;
+
+  .ocim-crop-size-btn {
+    opacity: 0.7;
+    .transition();
+
+    &.ocim-active {
+      opacity: 1;
+    }
+  }
+
+  .ocim-image-file {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    top:-500px;
+    left: -500px;
+    visibility: hidden;
+  }
+
+  .ocim-cropped-images-wrapper {
+    display: none;
+    h4 {
+      display: block;
+      width: 100%;
+    }
+
+    .ocim-cropped-image {
+      float: left;
+      position: relative;
+      width: 300px;
+      margin-right: 20px;
+      border: solid 1px #eee;
+
+      canvas {
+        width: 100% !important;
+        height: auto !important;
+      }
+
+      .ocim-cropped-image-delete {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+      }
+    }
+  }
 }

@@ -1,17 +1,45 @@
 <div class="ocim-actions-wrapper ocim-image-form-wrapper ocim-active" id="ocim-image-form-wrapper">
   <form>
-    <input type="file" name="image_file" id="image-file" class="image-file">
+    <div class="ocim-image-file">
+      <input type="file" name="image_file" id="ocim-image-file">
+    </div>
+    <div class="ocim-image-form-appends" id="ocim-image-form-appends">
+
+    </div>
     <div class="row ocim-form-step" id="ocim-form-step-1">
       <div class="col-md-6 col-sm-12 ocim-image-preview-wrapper">
         <img src="" class="ocim-image-preview" id="ocim-image-preview">
       </div>
       <div class="col-md-6 col-sm-12 ocim-image-crop-options">
+        <h4>Options</h4>
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="btn-group">
+              <button type="button" class="btn btn-info ocim-crop-options-btn" rel="rotate" data-value="15">
+                <i class="fa fa-rotate-left"></i>
+              </button>
+              <button type="button" class="btn btn-info ocim-crop-options-btn" rel="rotate" data-value="-15">
+                <span class="fa fa-rotate-right"></span>
+              </button>
+            </div>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-info ocim-crop-options-btn" rel="invert" data-value="horizontal">
+                <i class="fa fa-arrows-h"></i>
+              </button>
+              <button type="button" class="btn btn-info ocim-crop-options-btn" rel="invert" data-value="vertical">
+                <span class="fa fa-arrows-v"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
         <h4>Crop Sizes</h4>
         <div class="row">
           <div class="col-sm-12">
-              <button class="btn btn-sm btn-info ocim-crop-size-btn" rel="800x600">800x600</button>
-              <button class="btn btn-sm btn-info ocim-crop-size-btn" rel="1000x600">1000x600</button>
-              <button class="btn btn-sm btn-info ocim-crop-size-btn" rel="free">free</button>
+              <button type="button" class="btn btn-sm btn-info ocim-crop-size-btn" rel="800x600">800x600</button>
+              <button type="button" class="btn btn-sm btn-info ocim-crop-size-btn" rel="1000x600">1000x600</button>
+              <button type="button" class="btn btn-sm btn-info ocim-crop-size-btn ocim-active" rel="free">free</button>
           </div>
         </div>
 
@@ -28,7 +56,7 @@
               </div>
 
               <div class="input-group">
-                <button class="btn btn-sm btn-success" id="ocim-image-crop-set-size">set</button>
+                <button type="button" class="btn btn-sm btn-info" id="ocim-image-crop-set-size">set</button>
               </div>
             </div>
             <div class="form-inline">
@@ -39,6 +67,26 @@
               </div>
             </div>
           </div>
+        </div>
+
+        <div class="row ocim-image-crop-btn">
+          <div class="col-xs-6 col-xs-offset-3">
+            <button type="button" class="btn btn-block btn-warning" id="ocim-image-crop-btn">Crop image</button>
+          </div>
+        </div>
+      </div>
+      <div class="ocim-cropped-images-wrapper" id="ocim-cropped-images-wrapper">
+        <div class="col-sm-12 clearfix">
+          <h4>Cropped Images</h4>
+          <div id="ocim-cropped-images-list" class="clearfix">
+
+          </div>
+        </div>
+      </div>
+      <div class="ocim-form-step-buttons" id="ocim-form-step-buttons">
+        <div class="col-sm-12">
+          <button type="button" class="btn btn-primary pull-right">Image Metadata</button>
+          <button type="button" class="btn btn-success pull-right ocim-form-btn-save">Save and Back</button>
         </div>
       </div>
     </div>

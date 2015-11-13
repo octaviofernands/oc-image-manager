@@ -22,3 +22,12 @@
 .ocim-image-list-wrapper .ocim-image-list li a .ocim-image-item-description small:last-of-type{float:right}
 .ocim-image-list-wrapper .ocim-image-list li a:hover .ocim-image-item-description{bottom:0}
 .ocim-image-list-wrapper .pagination-wrap{display:block;width:100%;text-align:center}
+.ocim-image-form-wrapper{width:100%;position:relative;padding:20px;min-height:60vh;height:auto}
+.ocim-image-form-wrapper .ocim-crop-size-btn{opacity:.7;-webkit-transition:all .2s ease;-moztransition:all .2s ease;transition:all .2s ease}
+.ocim-image-form-wrapper .ocim-crop-size-btn.ocim-active{opacity:1}
+.ocim-image-form-wrapper .ocim-image-file{position:fixed;width:1px;height:1px;overflow:hidden;top:-500px;left:-500px;visibility:hidden}
+.ocim-image-form-wrapper .ocim-cropped-images-wrapper{display:none}
+.ocim-image-form-wrapper .ocim-cropped-images-wrapper h4{display:block;width:100%}
+.ocim-image-form-wrapper .ocim-cropped-images-wrapper .ocim-cropped-image{float:left;position:relative;width:300px;margin-right:20px;border:1px solid #eee}
+.ocim-image-form-wrapper .ocim-cropped-images-wrapper .ocim-cropped-image canvas{width:100%!important;height:auto!important}
+.ocim-image-form-wrapper .ocim-cropped-images-wrapper .ocim-cropped-image .ocim-cropped-image-delete{position:absolute;top:5px;right:5px}
