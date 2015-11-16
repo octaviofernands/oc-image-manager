@@ -33,8 +33,8 @@
 .ocim-image-form-wrapper .ocim-crop-size-form .checkbox{margin-left:10px}
 .ocim-image-form-wrapper .ocim-crop-size-form.ocim-active{opacity:1}
 .ocim-image-form-wrapper .ocim-image-file{position:fixed;width:1px;height:1px;overflow:hidden;top:-500px;left:-500px;visibility:hidden}
-.ocim-image-form-wrapper .ocim-cropped-images-wrapper{opacity:0;position:fixed;top:70px;right:-400px;width:400px;padding:0 15px;background:#fff;border:1px solid #ccc;z-index:99;border-bottom-left-radius:10px;-webkit-transition:right .4s ease;-moztransition:right .4s ease;transition:right .4s ease}
-.ocim-image-form-wrapper .ocim-cropped-images-wrapper>.ocim-cropped-images-toggle{display:block;position:absolute;right:398px;top:-1px;padding:10px 10px 10px 15px;margin-top:0;z-index:100;font-size:20px;border-radius:10px 0 0 10px}
+.ocim-image-form-wrapper .ocim-cropped-images-wrapper{opacity:0;position:fixed;top:70px;right:-400px;width:400px;padding:0 15px 15px;background:#fff;border:1px solid #ccc;z-index:99;border-bottom-left-radius:10px;-webkit-transition:right .4s ease;-moztransition:right .4s ease;transition:right .4s ease}
+.ocim-image-form-wrapper .ocim-cropped-images-wrapper>.ocim-cropped-images-toggle{display:block;position:absolute;right:397px;top:-1px;padding:10px 10px 10px 15px;margin-top:0;z-index:100;font-size:20px;border-radius:10px 0 0 10px}
 .ocim-image-form-wrapper .ocim-cropped-images-wrapper h4{display:block;text-align:center;width:100%}
 .ocim-image-form-wrapper .ocim-cropped-images-wrapper.ocim-active{opacity:1}
 .ocim-image-form-wrapper .ocim-cropped-images-wrapper.ocim-show{right:0}
