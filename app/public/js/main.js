@@ -15,12 +15,14 @@ var $navContainer = $('#ocim-nav'),
     $imgDataWidth = $('#ocim-image-crop-width'),
     $imgDataHeight = $('#ocim-image-crop-height'),
     $cropSizeButtons = $('.ocim-crop-size-btn'),
+    $cropSizeButtonLabel = $('#ocim-crop-sizes-btn-lbl'),
     $cropOptionsButtons = $('.ocim-crop-options-btn'),
     $cropCheckboxSaveCrop = $('#ocim-image-crop-save-size'),
     $buttonCrop = $('#ocim-image-crop-btn'),
     $buttonSetCropSize = $('#ocim-image-crop-set-size'),
     $formAppends = $('#ocim-image-form-appends'),
     $croppedImagesWrapper = $('#ocim-cropped-images-wrapper'),
+    $croppedImagesToggle = $('#ocim-cropped-images-toggle'),
     $croppedItemsList = $('#ocim-cropped-images-list'),
     $croppedItems = $('.ocim-cropped-image'),
     $croppedItemButtonDelete = $('.ocim-cropped-image-delete'),
@@ -34,6 +36,7 @@ var $navContainer = $('#ocim-nav'),
 
 var init = function () {
   $.material.init();
+  $('[data-toggle="tooltip"]').tooltip();
   initUploadEvent();
   initHandleButtons();
   initFormButtons();
@@ -139,14 +142,16 @@ var initFormButtons = function () {
   $('body').on('click', $cropSizeButtons.selector, function (e) {
     e.preventDefault();
     var ratio = $(this).attr('rel');
-    $(this).addClass('ocim-active').siblings().removeClass('ocim-active');
+
+    $cropSizeButtonLabel.html(ratio);
+
 
     switch (ratio) {
       case 'free':
         cropSizeSet = false;
         freeCrop = true;
         $imgPreview.cropper('setAspectRatio', NaN);
-        $imgCropFields.show();
+        $imgCropFields.addClass('ocim-active');
         break;
 
       default:
@@ -157,7 +162,7 @@ var initFormButtons = function () {
         freeCrop = false;
 
         $imgPreview.cropper('setAspectRatio', aspectRatio);
-        $imgCropFields.hide();
+        $imgCropFields.removeClass('ocim-active');
         break;
     }
   });
@@ -175,6 +180,11 @@ var initFormButtons = function () {
   $('body').on('click', $buttonCrop.selector, function (e) {
     e.preventDefault();
     cropImage();
+  });
+
+  $('body').on('click', $croppedImagesToggle.selector, function (e) {
+    e.preventDefault();
+    $croppedImagesWrapper.toggleClass('ocim-show');
   });
 };
 
@@ -194,10 +204,18 @@ var cropImage = function () {
     ' <a href="#" class="btn btn-sm btn-warning ' + $croppedItemButtonDelete.selector.replace('.', '') + '"><i class="fa fa-trash-o"></i></a>' +
     '</div>';
 
-  $croppedItemsList.append($(htmlItem).append(canvas).append(field));
-  $croppedImagesWrapper.show();
+  $croppedItemsList.prepend($(htmlItem).append(canvas).append(field));
+  $croppedImagesWrapper.addClass('ocim-active');
+  toastCroppedImage();
   resetCropForm();
 };
+
+function toastCroppedImage () {
+  $croppedImagesWrapper.addClass('ocim-show');
+  setTimeout(function () {
+    $croppedImagesWrapper.removeClass('ocim-show');
+  },2000);
+}
 
 var resetCropForm = function () {
   $cropCheckboxSaveCrop.prop('checked', false);

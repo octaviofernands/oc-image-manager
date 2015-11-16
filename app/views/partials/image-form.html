@@ -25,10 +25,7 @@
               <span class="fa fa-arrows-v"></span>
             </button>
           </div>
-        <!--
-        </div>
-        <div class="col-sm-2">
-        -->
+
           <div class="ocim-options-divider"></div>
 
           <label class="ocim-form-lbl-crop-sizes">Crop Sizes:</label>
@@ -39,39 +36,27 @@
             <ul class="dropdown-menu" id="ocim-crop-sizes-list">
               <li><a href="#" class="ocim-crop-size-btn" rel="800x600">800x600</a></li>
               <li><a href="#" class="ocim-crop-size-btn" rel="1000x600">1000x600</a></li>
-              <li class="divider"></li>
               <li><a href="#" class="ocim-crop-size-btn" rel="free">free</a></li>
             </ul>
           </div>
-        <!--
-        </div>
-        <div class="col-sm-5">
-        -->
-          <div class="form-inline ocim-crop-size-form" id="ocim-image-crop-fields">
-            <div class="input-group">
+          <div class="form-inline ocim-crop-size-form ocim-active" id="ocim-image-crop-fields">
+            <div class="form-group">
               <input type="text" class="form-control" id="ocim-image-crop-width" placeholder="width">
             </div>
+            <label>x</label>
 
-            <div class="input-group">
-              <span class="input-group-addon">x</span>
+            <div class="form-group">
               <input type="text" class="form-control" id="ocim-image-crop-height" placeholder="height">
             </div>
 
-            <div class="input-group">
-              <button type="button" class="btn btn-xs btn-info" id="ocim-image-crop-set-size">set</button>
+            <button type="button" class="btn btn-xs btn-info" id="ocim-image-crop-set-size">set</button>
+            <div class="checkbox">
+              <label  data-toggle="tooltip" data-placement="top" title="" data-original-title="Save for future uses">
+                <input type="checkbox" id="ocim-image-crop-save-size"> Save crop
+              </label>
             </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" id="ocim-image-crop-save-size"> Save crop
-                </label>
-              </div>
           </div>
-        <!--
-        </div>
-
-        <div class="col-sm-2">
-        -->
-          <button type="button" class="btn btn-sm btn-warning" id="ocim-image-crop-btn">Crop image</button>
+          <button type="button" class="btn btn-sm btn-material-deep-purple" id="ocim-image-crop-btn"><i class="fa fa-crop"></i> Crop image</button>
         </div>
       </div>
       <div class="row">
@@ -80,11 +65,12 @@
         </div>
       </div>
       <div class="ocim-cropped-images-wrapper" id="ocim-cropped-images-wrapper">
-        <div class="col-sm-12 clearfix">
-          <h4>Cropped Images</h4>
-          <div id="ocim-cropped-images-list" class="clearfix">
+        <a href="#" class="btn btn-material-indigo ocim-cropped-images-toggle" id="ocim-cropped-images-toggle">
+          <i class="fa fa-image"></i>
+        </a>
+        <h4>Cropped Images</h4>
+        <div id="ocim-cropped-images-list" class="ocim-cropped-images-list clearfix">
 
-          </div>
         </div>
       </div>
       <div class="ocim-form-step-buttons" id="ocim-form-step-buttons">

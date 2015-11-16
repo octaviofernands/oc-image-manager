@@ -11,6 +11,10 @@
     }
   }
 
+  .ocim-form-lbl-crop-sizes {
+    font-weight: 400;
+  }
+
   .ocim-options-divider {
     display: inline-block;
     width: 1px;
@@ -22,11 +26,31 @@
 
   .ocim-crop-size-form {
     display: inline-block;
-    margin-left: 10px;
+    margin: 0 10px;
+    .transition();
+    opacity: 0;
+
 
     .form-control {
       width: 100%;
       max-width: 50px;
+    }
+
+    >label {
+      font-weight: 400;
+      margin: 0 5px;
+    }
+
+    >button {
+      margin-left: 5px;
+    }
+
+    .checkbox {
+      margin-left: 10px;
+    }
+
+    &.ocim-active {
+      opacity: 1;
     }
   }
 
@@ -41,17 +65,50 @@
   }
 
   .ocim-cropped-images-wrapper {
-    display: none;
+    opacity: 0;
+    position: fixed;
+    top: 70px;
+    right: -400px;
+    width: 400px;
+    padding: 0 15px;
+    background: #fff;
+    border: solid 1px #ccc;
+    z-index: 99;
+    border-bottom-left-radius: @defaultRadius;
+    .transition(right, 400ms, ease);
+
+    >.ocim-cropped-images-toggle {
+      display: block;
+      position: absolute;
+      right: 398px;
+      top: -1px;
+      border-top-left-radius: @defaultRadius;
+      border-bottom-left-radius: @defaultRadius;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: 10px 10px 10px 15px;
+      margin-top: 0;
+      z-index: 100;
+      font-size: 20px;
+    }
+
     h4 {
       display: block;
+      text-align: center;
       width: 100%;
     }
 
+    &.ocim-active {
+      opacity: 1;
+    }
+
+    &.ocim-show {
+      right: 0;
+    }
+
     .ocim-cropped-image {
-      float: left;
-      position: relative;
-      width: 300px;
-      margin-right: 20px;
+      width: 100%;
+      margin-top: 10px;
       border: solid 1px #eee;
 
       canvas {
