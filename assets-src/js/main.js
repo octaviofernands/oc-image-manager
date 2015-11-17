@@ -41,6 +41,9 @@ var init = function () {
   initUploadEvent();
   initHandleButtons();
   initFormButtons();
+  /*
+
+  */
 };
 
 var initUploadEvent = function () {
@@ -70,6 +73,7 @@ function loadImageUploadForm (fileData, evt) {
 
   $imgPreview.cropper('destroy');
   $imgPreview.cropper({
+    viewMode:1,
     aspectRatio: NaN,
     strict: true,
     responsive: true,
@@ -81,10 +85,11 @@ function loadImageUploadForm (fileData, evt) {
     background: true,
     autoCrop: true,
     autoCropArea: 0.8,
-    mouseWheelZoom: false,
-    touchDragZoom: false,
+    zoomable: false,
+    zoomOnWheel: false,
+    zoomOnTouch: false,
     cropBoxMovable: true,
-    cropBoxResizable: true,
+    cropBoxResizable: false,
     doubleClickToggle: false,
     minContainerWidth: 200,
     minContainerHeight: 100,
@@ -226,8 +231,14 @@ var cropImage = function () {
   $croppedItemsList.prepend($(htmlItem).append(canvas).append(field));
   $croppedImagesWrapper.addClass('ocim-active');
   toastCroppedImage();
+  croppedWrapperPositioning();
   resetCropForm();
 };
+
+var croppedWrapperPositioning = function () {
+  var croppedWrapperHeight = $(window).height() - $croppedImagesWrapper.offset().top - 20;
+  $croppedImagesWrapper.height(croppedWrapperHeight);
+}
 
 function toastCroppedImage () {
   $croppedImagesWrapper.addClass('ocim-show');
