@@ -196,6 +196,11 @@ var initFormButtons = function () {
 
     util.modalConfirm('Delete this crop?', function () {
       $container.fadeOut(200, function() {
+        if($($container.selector).length == 0) {
+          $croppedImagesWrapper.removeClass('ocim-active');
+          $croppedImagesWrapper.removeClass('ocim-show');
+        }
+
         $container.remove();
       });
     });
@@ -228,7 +233,7 @@ function toastCroppedImage () {
   $croppedImagesWrapper.addClass('ocim-show');
   setTimeout(function () {
     $croppedImagesWrapper.removeClass('ocim-show');
-  },2000);
+  },1000);
 }
 
 var resetCropForm = function () {
