@@ -1,4 +1,4 @@
-<div class="ocim-actions-wrapper ocim-image-form-wrapper container-fluid" id="ocim-image-form-wrapper">
+<div class="ocim-actions-wrapper ocim-image-form-wrapper container-fluid ocim-active" id="ocim-image-form-wrapper">
   <form>
     <div class="ocim-image-file">
       <input type="file" name="image_file" id="ocim-image-file">
@@ -57,6 +57,9 @@
             </div>
           </div>
           <button type="button" class="btn btn-sm btn-material-deep-purple" id="ocim-image-crop-btn"><i class="fa fa-crop"></i> Crop image</button>
+
+          <button type="button" class="btn btn-sm btn-primary pull-right">Image Metadata</button>
+          <button type="button" class="btn btn-sm btn-success pull-right ocim-form-btn-save">Save and finish</button>
         </div>
       </div>
       <div class="row">
@@ -69,16 +72,12 @@
           <i class="fa fa-image"></i>
         </a>
         <h4>Cropped Images</h4>
-        <div id="ocim-cropped-images-list" class="ocim-cropped-images-list">
+        <div id="ocim-cropped-images-list" class="ocim-cropped-images-list"></div>
+      </div>
+    </div>
 
-        </div>
-      </div>
-      <div class="ocim-form-step-buttons" id="ocim-form-step-buttons">
-        <div class="col-sm-12">
-          <button type="button" class="btn btn-primary pull-right">Image Metadata</button>
-          <button type="button" class="btn btn-success pull-right ocim-form-btn-save">Save and Back</button>
-        </div>
-      </div>
+    <div class="ocim-form-step" id="ocim-form-step-2">
+
     </div>
   </form>
 </div>
