@@ -1,4 +1,51 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var modalConfirm = function (msg, callbackYes, callbackNo) {
+  htmlModal = '' +
+    '<div id="modal-confirm" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-confirm-label" aria-hidden="true">' +
+    ' <div class="modal-dialog">' +
+    '   <div class="modal-content">' +
+    '     <div class="modal-header">' +
+    '       <h3 id="modal-confirm-label">Confirmation</h3>' +
+    '     </div>' +
+    '     <div class="modal-body">' +
+    '       <p>' + msg + '</p>' +
+    '     </div>' +
+    '     <div class="modal-footer">' +
+    '       <button id="btn-cancel" class="btn">Cancel</button>' +
+    '       <button id="btn-confirm" class="btn btn-primary">Confirm</button>' +
+    '     </div>' +
+    '   </div>' +
+    ' </div>' +
+    '</div>';
+
+  $('body').append($(htmlModal));
+  $('#modal-confirm').modal('show');
+
+  $('#btn-confirm').click(function(){
+    callbackYes();
+    $('#modal-confirm').modal('hide');
+    $('#modal-confirm').on('hidden.bs.modal', function (e) {
+      $('#modal-confirm').remove();
+    })
+  });
+
+  $('#btn-cancel').click(function(){
+    if(typeof callbackNo != 'undefined') {
+      callbackNo();
+    }
+    $('#modal-confirm').modal('hide');
+    $('#modal-confirm').on('hidden.bs.modal', function (e) {
+      $('#modal-confirm').remove();
+    })
+  });
+};
+
+module.exports = {
+  modalConfirm: modalConfirm
+};
+},{}],2:[function(require,module,exports){
+var util = require('./functions');
+
 var $navContainer = $('#ocim-nav'),
     $navDefault = $('#ocim-nav-default'),
     $navSelected = $('#ocim-nav-img-selected'),
@@ -186,6 +233,19 @@ var initFormButtons = function () {
     e.preventDefault();
     $croppedImagesWrapper.toggleClass('ocim-show');
   });
+
+  $('body').on('click', $croppedItemButtonDelete.selector, function (e) {
+    e.preventDefault();
+
+    var $btn = $(this);
+    var $container = $btn.closest($croppedItems.selector);
+
+    util.modalConfirm('Delete this crop?', function () {
+      $container.fadeOut(200, function() {
+        $container.remove();
+      });
+    });
+  });
 };
 
 var cropImage = function () {
@@ -201,7 +261,7 @@ var cropImage = function () {
   var field = $('<input type="hidden" name="imgcropdata[]">').val(croppedDataJson);
   var htmlItem = '' +
     '<div class="' + $croppedItems.selector.replace('.', '') + '" >' +
-    ' <a href="#" class="btn btn-sm btn-warning ' + $croppedItemButtonDelete.selector.replace('.', '') + '"><i class="fa fa-trash-o"></i></a>' +
+    ' <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete image" class="btn btn-xs btn-danger ' + $croppedItemButtonDelete.selector.replace('.', '') + '"><i class="fa fa-trash-o"></i></a>' +
     '</div>';
 
   $croppedItemsList.prepend($(htmlItem).append(canvas).append(field));
@@ -251,4 +311,4 @@ var validateImage = function (file) {
 $(document).ready(function () {
   init();
 });
-},{}]},{},[1]);
+},{"./functions":1}]},{},[2]);

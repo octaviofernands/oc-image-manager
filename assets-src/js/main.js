@@ -1,3 +1,5 @@
+var util = require('./functions');
+
 var $navContainer = $('#ocim-nav'),
     $navDefault = $('#ocim-nav-default'),
     $navSelected = $('#ocim-nav-img-selected'),
@@ -185,6 +187,19 @@ var initFormButtons = function () {
     e.preventDefault();
     $croppedImagesWrapper.toggleClass('ocim-show');
   });
+
+  $('body').on('click', $croppedItemButtonDelete.selector, function (e) {
+    e.preventDefault();
+
+    var $btn = $(this);
+    var $container = $btn.closest($croppedItems.selector);
+
+    util.modalConfirm('Delete this crop?', function () {
+      $container.fadeOut(200, function() {
+        $container.remove();
+      });
+    });
+  });
 };
 
 var cropImage = function () {
@@ -200,7 +215,7 @@ var cropImage = function () {
   var field = $('<input type="hidden" name="imgcropdata[]">').val(croppedDataJson);
   var htmlItem = '' +
     '<div class="' + $croppedItems.selector.replace('.', '') + '" >' +
-    ' <a href="#" class="btn btn-sm btn-warning ' + $croppedItemButtonDelete.selector.replace('.', '') + '"><i class="fa fa-trash-o"></i></a>' +
+    ' <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete image" class="btn btn-xs btn-danger ' + $croppedItemButtonDelete.selector.replace('.', '') + '"><i class="fa fa-trash-o"></i></a>' +
     '</div>';
 
   $croppedItemsList.prepend($(htmlItem).append(canvas).append(field));

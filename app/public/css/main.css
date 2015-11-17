@@ -38,6 +38,7 @@
 .ocim-image-form-wrapper .ocim-cropped-images-wrapper h4{display:block;text-align:center;width:100%}
 .ocim-image-form-wrapper .ocim-cropped-images-wrapper.ocim-active{opacity:1}
 .ocim-image-form-wrapper .ocim-cropped-images-wrapper.ocim-show{right:0}
-.ocim-image-form-wrapper .ocim-cropped-images-wrapper .ocim-cropped-image{width:100%;margin-top:10px;border:1px solid #eee}
-.ocim-image-form-wrapper .ocim-cropped-images-wrapper .ocim-cropped-image canvas{width:100%!important;height:auto!important}
+.ocim-image-form-wrapper .ocim-cropped-images-wrapper .ocim-cropped-image{position:relative;width:100%;margin-top:10px;margin-bottom:30px;border:1px dashed #000}
+.ocim-image-form-wrapper .ocim-cropped-images-wrapper .ocim-cropped-image:after{content:"";position:absolute;width:100%;height:1px;background:#ccc;bottom:-15px;left:0}
+.ocim-image-form-wrapper .ocim-cropped-images-wrapper .ocim-cropped-image canvas{display:block;width:100%!important;height:auto!important}
 .ocim-image-form-wrapper .ocim-cropped-images-wrapper .ocim-cropped-image .ocim-cropped-image-delete{position:absolute;top:5px;right:5px}

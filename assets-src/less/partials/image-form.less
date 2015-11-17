@@ -107,11 +107,24 @@
     }
 
     .ocim-cropped-image {
+      position: relative;
       width: 100%;
       margin-top: 10px;
-      border: solid 1px #eee;
+      margin-bottom: 30px;
+      border: dashed 1px #000;
+
+      &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        background: #ccc;
+        bottom: -15px;
+        left: 0;
+      }
 
       canvas {
+        display: block;
         width: 100% !important;
         height: auto !important;
       }
