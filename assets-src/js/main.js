@@ -89,7 +89,7 @@ function loadImageUploadForm (fileData, evt) {
     zoomOnWheel: false,
     zoomOnTouch: false,
     cropBoxMovable: true,
-    cropBoxResizable: false,
+    cropBoxResizable: true,
     doubleClickToggle: false,
     minContainerWidth: 200,
     minContainerHeight: 100,
@@ -201,12 +201,14 @@ var initFormButtons = function () {
 
     util.modalConfirm('Delete this crop?', function () {
       $container.fadeOut(200, function() {
-        if($($container.selector).length == 0) {
+        //if($($container.selector).length == 0) {
+        $container.remove();
+        if($($croppedItemsList.selector + '>div').length == 0) {
           $croppedImagesWrapper.removeClass('ocim-active');
           $croppedImagesWrapper.removeClass('ocim-show');
         }
 
-        $container.remove();
+
       });
     });
   });
