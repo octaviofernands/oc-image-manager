@@ -4,6 +4,13 @@
   min-height: 60vh;
   height: auto;
 
+  .ocim-form-step {
+    display: none;
+    &.ocim-active {
+      display: block;
+    }
+  }
+
   .ocim-image-preview-wrapper {
     width: 100%;
 
@@ -38,10 +45,16 @@
     .transition();
     opacity: 0;
 
+    .form-group {
+      margin: 0;
+    }
 
     .form-control {
       width: 100%;
       max-width: 50px;
+      margin-bottom: 0;
+      text-align: center;
+      padding-bottom: 0;
     }
 
     >label {

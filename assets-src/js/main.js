@@ -9,6 +9,7 @@ var $navContainer = $('#ocim-nav'),
     $imgList = $('#ocim-image-list'),
     $imgFormWrapper = $('#ocim-image-form-wrapper'),
     $imgFormStep1 = $('#ocim-form-step-1'),
+    $imgFormStep2 = $('#ocim-form-step-2'),
     $imgCropFields = $('#ocim-image-crop-fields'),
     $imgFormStep2 = $('#ocim-form-step-2'),
     $imgFormBtnUpload = $('#ocim-image-file'),
@@ -27,6 +28,16 @@ var $navContainer = $('#ocim-nav'),
     $croppedItemsList = $('#ocim-cropped-images-list'),
     $croppedItems = $('.ocim-cropped-image'),
     $croppedItemButtonDelete = $('.ocim-cropped-image-delete'),
+    $buttonMetadata = $('#ocim-form-btn-image-meta'),
+    $buttonEditor = $('#ocim-form-btn-image-editor'),
+    $buttonFinish = $('.ocim-form-btn-save'),
+    $formMetaImgTitle = $('#ocim-field-image-title'),
+    $formMetaImgAlt = $('#ocim-field-image-alt'),
+    $formMetaImgCredits = $('#ocim-field-image-credits'),
+    $formMetaInfoFileName = $('#ocim-file-info-file-name'),
+    $formMetaInfoFileSize = $('#ocim-file-info-file-size'),
+    $formMetaInfoFileType = $('#ocim-file-info-file-type'),
+    $formMetaInfoFileRes = $('#ocim-file-info-file-res'),
     scaleX = 1,
     scaleY = 1,
     imgWidth = 0,
@@ -41,9 +52,6 @@ var init = function () {
   initUploadEvent();
   initHandleButtons();
   initFormButtons();
-  /*
-
-  */
 };
 
 var initUploadEvent = function () {
@@ -67,6 +75,8 @@ var initUploadEvent = function () {
 
 function loadImageUploadForm (fileData, evt) {
   var src = evt.target.result;
+
+  fillImageInfo(fileData, src);
 
   $imgPreview.attr('src', src);
   showUploadForm();
@@ -102,9 +112,57 @@ function loadImageUploadForm (fileData, evt) {
   });
 };
 
-function showUploadForm () {
+var fillImageInfo = function (fileData, src) {
+  imgTitle = ''; //fileData.name
+  $formMetaImgTitle.val(imgTitle);
+
+  $formMetaInfoFileName.html(fileData.name);
+  $formMetaInfoFileSize.html(getFileSize(fileData.size));
+  $formMetaInfoFileType.html(fileData.type);
+
+  getImageOriginalResolution(src, function (res) {
+    $formMetaInfoFileRes.html(res);
+  });
+
+
+  //$formMetaInfoFileRes = $('#ocim-file-info-file-res');
+};
+
+var getImageOriginalResolution = function (src, callback) {
+  var tmpImg = new Image();
+
+  tmpImg.onload = function () {
+    var width = tmpImg.width;
+    var height = tmpImg.height;
+    var dimensions = width + 'x' + height;
+
+    callback(dimensions);
+  }
+
+  tmpImg.src = src;
+};
+
+var getFileSize = function (sizeBytes) {
+  var suffix = '';
+  var size = '';
+  if(sizeBytes / (1000 * 1024) > 1) {
+    size = (sizeBytes / (1000 * 1024)).toFixed(2);
+    suffix = 'mb'
+  } else if(sizeBytes / 1024 > 1) {
+    size = (sizeBytes / 1024).toFixed(2);
+    suffix = 'kb'
+  } else {
+    size = sizeBytes;
+    suffix = 'bytes';
+  }
+
+  return size + suffix;
+};
+
+var showUploadForm = function () {
   $imgListWrapper.removeClass('ocim-active');
   $imgFormWrapper.addClass('ocim-active');
+
   $navForm.addClass('ocim-active').siblings().removeClass('ocim-active');
 };
 
@@ -150,7 +208,6 @@ var initFormButtons = function () {
     var ratio = $(this).attr('rel');
 
     $cropSizeButtonLabel.html(ratio);
-
 
     switch (ratio) {
       case 'free':
@@ -201,7 +258,6 @@ var initFormButtons = function () {
 
     util.modalConfirm('Delete this crop?', function () {
       $container.fadeOut(200, function() {
-        //if($($container.selector).length == 0) {
         $container.remove();
         if($($croppedItemsList.selector + '>div').length == 0) {
           $croppedImagesWrapper.removeClass('ocim-active');
@@ -211,6 +267,20 @@ var initFormButtons = function () {
 
       });
     });
+  });
+
+  $('body').on('click', $buttonMetadata.selector, function (e) {
+    e.preventDefault();
+
+    $imgFormStep1.hide();
+    $imgFormStep2.show();
+  });
+
+  $('body').on('click', $buttonEditor.selector, function (e) {
+    e.preventDefault();
+
+    $imgFormStep2.hide();
+    $imgFormStep1.show();
   });
 };
 

@@ -1,4 +1,4 @@
-<div class="ocim-actions-wrapper ocim-image-form-wrapper container-fluid ocim-active" id="ocim-image-form-wrapper">
+<div class="ocim-actions-wrapper ocim-image-form-wrapper container-fluid" id="ocim-image-form-wrapper">
   <form>
     <div class="ocim-image-file">
       <input type="file" name="image_file" id="ocim-image-file">
@@ -6,10 +6,11 @@
     <div class="ocim-image-form-appends" id="ocim-image-form-appends">
 
     </div>
-    <div class="ocim-form-step" id="ocim-form-step-1">
+    <div class="ocim-form-step ocim-active" id="ocim-form-step-1">
       <div class="row ocim-form-row-options">
         <div class="col-sm-12">
-          <div class="btn-group">
+
+          <div class="btn-group toolbar-options ocim-show">
             <button type="button" class="btn btn-sm btn-info ocim-crop-options-btn" rel="rotate" data-value="45">
               <i class="fa fa-rotate-left"></i>
             </button>
@@ -17,7 +18,8 @@
               <span class="fa fa-rotate-right"></span>
             </button>
           </div>
-          <div class="btn-group">
+
+          <div class="btn-group toolbar-options ocim-show">
             <button type="button" class="btn btn-sm btn-info ocim-crop-options-btn" rel="invert" data-value="horizontal">
               <i class="fa fa-arrows-h"></i>
             </button>
@@ -26,10 +28,10 @@
             </button>
           </div>
 
-          <div class="ocim-options-divider"></div>
+          <div class="ocim-options-divider toolbar-options ocim-show"></div>
 
-          <label class="ocim-form-lbl-crop-sizes">Crop Sizes:</label>
-          <div class="btn-group">
+          <label class="ocim-form-lbl-crop-sizes toolbar-options ocim-show">Crop Sizes:</label>
+          <div class="btn-group toolbar-options ocim-show">
             <a href="bootstrap-elements.html" data-target="#" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown">
               <span id="ocim-crop-sizes-btn-lbl">Free</span>&nbsp;&nbsp;<span class="caret"></span>
             </a>
@@ -39,7 +41,7 @@
               <li><a href="#" class="ocim-crop-size-btn" rel="free">free</a></li>
             </ul>
           </div>
-          <div class="form-inline ocim-crop-size-form ocim-active" id="ocim-image-crop-fields">
+          <div class="form-inline ocim-crop-size-form ocim-active toolbar-options ocim-show" id="ocim-image-crop-fields">
             <div class="form-group">
               <input type="text" class="form-control" id="ocim-image-crop-width" placeholder="width">
             </div>
@@ -58,8 +60,8 @@
           </div>
           <button type="button" class="btn btn-sm btn-material-deep-purple" id="ocim-image-crop-btn"><i class="fa fa-crop"></i> Crop image</button>
 
-          <button type="button" class="btn btn-sm btn-primary pull-right">Image Metadata</button>
-          <button type="button" class="btn btn-sm btn-success pull-right ocim-form-btn-save">Save and finish</button>
+          <button type="button" class="btn btn-sm btn-primary pull-right" id="ocim-form-btn-image-meta">Image Metadata</button>
+          <button type="button" class="btn btn-sm btn-success pull-right ocim-form-btn-save" id="ocim-form-btn-finish">Save and finish</button>
         </div>
       </div>
       <div class="row">
@@ -77,12 +79,55 @@
     </div>
 
     <div class="ocim-form-step" id="ocim-form-step-2">
+      <div class="row ocim-form-row-options">
+        <div class="col-sm-12">
+          <button type="button" class="btn btn-sm btn-primary pull-right" id="ocim-form-btn-image-editor">Image Editor</button>
+          <button type="button" class="btn btn-sm btn-success pull-right ocim-form-btn-save" id="ocim-form-btn-finish">Save and finish</button>
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-6">
-          <h4>Image Data</h4>
-          <div class="form-group">
-            <input type="text" class="form-control" id="ocim-field-image-title" placeholder="Image Title">
-          </div>
+          <h3>Image Metadata</h3>
+          <fieldset class="ocim-form-metadata">
+
+            <div class="form-group label-floating">
+              <label class="control-label" for="ocim-field-image-title">Image Title</label>
+              <input type="text" name="title" class="form-control" id="ocim-field-image-title">
+            </div>
+
+            <div class="form-group label-floating">
+              <label class="control-label" for="ocim-field-image-alt">Alt</label>
+              <input type="text" name="alt" class="form-control" id="ocim-field-image-alt">
+            </div>
+
+            <div class="form-group label-floating">
+              <label class="control-label" for="ocim-field-image-credits">Credits</label>
+              <input type="text" name="credits" class="form-control" id="ocim-field-image-credits">
+            </div>
+
+            <div class="form-group label-floating">
+              <label class="control-label" for="ocim-field-image-credits">Tags <small>(use tab for choosing tags)</small></label>
+              <input type="text" name="credits" class="form-control" id="ocim-field-image-tags">
+            </div>
+          </fieldset>
+        </div>
+        <div class="col-md-6">
+          <h3>Image Info</h3>
+          <ul>
+            <li>Image name: <strong id="ocim-file-info-file-name">xuxa.png</strong></li>
+            <li>Image size: <strong id="ocim-file-info-file-size">5mb</strong></li>
+            <li>Image type: <strong id="ocim-file-info-file-type">image/jpeg</strong></li>
+            <li>Original resolution: <strong id="ocim-file-info-file-res">3000x2000</strong></li>
+            <li>
+              Image Crops:
+              <ul id="ocim-file-info-file-type">
+                <li>800x600</li>
+                <li>800x600</li>
+                <li>800x600</li>
+                <li>800x600</li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
