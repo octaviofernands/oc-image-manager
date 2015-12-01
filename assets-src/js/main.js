@@ -22,7 +22,6 @@ var $navContainer = $('#ocim-nav'),
     $cropCheckboxSaveCrop = $('#ocim-image-crop-save-size'),
     $buttonCrop = $('#ocim-image-crop-btn'),
     $buttonSetCropSize = $('#ocim-image-crop-set-size'),
-    $formAppends = $('#ocim-image-form-appends'),
     $croppedImagesWrapper = $('#ocim-cropped-images-wrapper'),
     $croppedImagesToggle = $('#ocim-cropped-images-toggle'),
     $croppedItemsList = $('#ocim-cropped-images-list'),
@@ -38,12 +37,14 @@ var $navContainer = $('#ocim-nav'),
     $formMetaInfoFileSize = $('#ocim-file-info-file-size'),
     $formMetaInfoFileType = $('#ocim-file-info-file-type'),
     $formMetaInfoFileRes = $('#ocim-file-info-file-res'),
+    $formMetaInfoFileCrops = $('#ocim-file-info-file-crops'),
     scaleX = 1,
     scaleY = 1,
     imgWidth = 0,
     imgHeight = 0,
     cropSizeSet = false,
-    freeCrop = true
+    freeCrop = true,
+    cropsizes = []
     ;
 
 var init = function () {
@@ -162,7 +163,6 @@ var getFileSize = function (sizeBytes) {
 var showUploadForm = function () {
   $imgListWrapper.removeClass('ocim-active');
   $imgFormWrapper.addClass('ocim-active');
-
   $navForm.addClass('ocim-active').siblings().removeClass('ocim-active');
 };
 
@@ -300,6 +300,7 @@ var cropImage = function () {
     ' <a href="#" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete image" class="btn btn-xs btn-danger ' + $croppedItemButtonDelete.selector.replace('.', '') + '"><i class="fa fa-trash-o"></i></a>' +
     '</div>';
 
+  $formMetaInfoFileCrops.append('<li>' + croppedData.imgWidth + 'x' + croppedData.imgHeight + '</li>');
   $croppedItemsList.prepend($(htmlItem).append(canvas).append(field));
   $croppedImagesWrapper.addClass('ocim-active');
   toastCroppedImage();
@@ -312,7 +313,7 @@ var croppedWrapperPositioning = function () {
   $croppedImagesWrapper.height(croppedWrapperHeight);
 }
 
-function toastCroppedImage () {
+var toastCroppedImage = function () {
   $croppedImagesWrapper.addClass('ocim-show');
   setTimeout(function () {
     $croppedImagesWrapper.removeClass('ocim-show');
@@ -333,6 +334,18 @@ var resetCropForm = function () {
   imgHeight = 0;
   cropSizeSet = false;
   freeCrop = true;
+};
+
+var resetForm = function () {
+  $formMetaImgTitle.val('');
+  $formMetaImgAlt.val('');
+  $formMetaImgCredits.val('');
+  $formMetaInfoFileName.html('');
+  $formMetaInfoFileSize.html('');
+  $formMetaInfoFileType.html('');
+  $formMetaInfoFileRes.html('');
+  $formMetaInfoFileCrops.html('');
+  $croppedItemsList.html('');
 };
 
 var validateImage = function (file) {
